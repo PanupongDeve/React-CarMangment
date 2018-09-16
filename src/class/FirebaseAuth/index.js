@@ -17,23 +17,27 @@ class FirebaseAuth {
                 uid: response.user.uid
             }
             await this.saveUserProfileToDatabase(data);
-            return await this.isUser() ? true : false;
+            return await this.isAuth() ? true : false;
         } catch (error) {
             console.log(error);
         }
     }
 
-    async signUpWithUsername(username, password) {
+    async signUpWithUsername(username, password, role_documentId = 'JrpWhxIylwArKbi2iCld') {
         try {
             const email = this.migrateToEmail(username);
             const response = await this.firebase.auth().createUserWithEmailAndPassword(email, password);
             const data = {
                 username,
                 uid: response.user.uid,
-                role: role.CUSTOMER
+                role_documentId
             }
-            await this.saveUserProfileToDatabase(data);
-            return await this.isUser() ? true : false;
+            if(await this.isAuth()) {
+                await this.saveUserProfileToDatabase(data);
+                return await model.user.getByUID(response.user.uid);
+            } else {
+                throw "Authentication Fail"
+            }
         } catch (error) {
             console.log(error);
         }
@@ -84,8 +88,7 @@ class FirebaseAuth {
     async login(email, password) {
         try {
             this.firebase.auth().signInWithEmailAndPassword(email, password);
-            
-            return await this.isUser() ? true : false;
+            return await this.isAuth() ? true : false;
         } catch (error) {
             console.log(error);
         }
@@ -94,9 +97,13 @@ class FirebaseAuth {
     async loginWithUsername(username, password) {
         try {
             const email = this.migrateToEmail(username);
-            this.firebase.auth().signInWithEmailAndPassword(email, password);
-            
-            return await this.isUser() ? true : false;
+            const response = await this.firebase.auth().signInWithEmailAndPassword(email, password);
+    
+            if(await this.isAuth()) {
+                return await model.user.getByUID(response.user.uid);
+            } else {
+                throw "Authentication Fail"
+            }
         } catch (error) {
             console.log(error);
         }

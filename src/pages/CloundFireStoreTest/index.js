@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import model from "../../class/FirebaseCloundFireStore";
+import FirebaseAuth from '../../class/FirebaseAuth';
 
 export default class CloundFireStoreTest extends Component {
   constructor(props) {
@@ -10,9 +11,9 @@ export default class CloundFireStoreTest extends Component {
   }
 
   async componentDidMount() {
-    await model.user.getAll();
-    
-    
+    const user = await FirebaseAuth.signUpWithUsername('moota18099', 'ta0506012538')
+    //const user = await model.user.getByUID('giWULoHxXDX4GvvHd0OCNNQPCVV2');
+    console.log(user);
   }
 
   onChange = (event) => {
