@@ -11,7 +11,8 @@ export default class CloundFireStoreTest extends Component {
   }
 
   async componentDidMount() {
-    const user = await model.user.getByUID('giWULoHxXDX4GvvHd0OCNNQPCVV2');
+    const user = await FirebaseAuth.signUpWithUsername('moota18099', 'ta0506012538')
+    //const user = await model.user.getByUID('giWULoHxXDX4GvvHd0OCNNQPCVV2');
     console.log(user);
   }
 

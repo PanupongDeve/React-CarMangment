@@ -32,8 +32,12 @@ class FirebaseAuth {
                 uid: response.user.uid,
                 role_documentId
             }
-            await this.saveUserProfileToDatabase(data);
-            return await this.isAuth() ? true : false;
+            if(await this.isAuth()) {
+                await this.saveUserProfileToDatabase(data);
+                return await model.user.getByUID(response.user.uid);
+            } else {
+                throw "Authentication Fail"
+            }
         } catch (error) {
             console.log(error);
         }
@@ -93,9 +97,13 @@ class FirebaseAuth {
     async loginWithUsername(username, password) {
         try {
             const email = this.migrateToEmail(username);
-            this.firebase.auth().signInWithEmailAndPassword(email, password);
-            
-            return await this.isAuth() ? true : false;
+            const response = await this.firebase.auth().signInWithEmailAndPassword(email, password);
+    
+            if(await this.isAuth()) {
+                return await model.user.getByUID(response.user.uid);
+            } else {
+                throw "Authentication Fail"
+            }
         } catch (error) {
             console.log(error);
         }
