@@ -17,23 +17,23 @@ class FirebaseAuth {
                 uid: response.user.uid
             }
             await this.saveUserProfileToDatabase(data);
-            return await this.isUser() ? true : false;
+            return await this.isAuth() ? true : false;
         } catch (error) {
             console.log(error);
         }
     }
 
-    async signUpWithUsername(username, password) {
+    async signUpWithUsername(username, password, role_documentId = 'JrpWhxIylwArKbi2iCld') {
         try {
             const email = this.migrateToEmail(username);
             const response = await this.firebase.auth().createUserWithEmailAndPassword(email, password);
             const data = {
                 username,
                 uid: response.user.uid,
-                role: role.CUSTOMER
+                role_documentId
             }
             await this.saveUserProfileToDatabase(data);
-            return await this.isUser() ? true : false;
+            return await this.isAuth() ? true : false;
         } catch (error) {
             console.log(error);
         }
@@ -84,8 +84,7 @@ class FirebaseAuth {
     async login(email, password) {
         try {
             this.firebase.auth().signInWithEmailAndPassword(email, password);
-            
-            return await this.isUser() ? true : false;
+            return await this.isAuth() ? true : false;
         } catch (error) {
             console.log(error);
         }
@@ -96,7 +95,7 @@ class FirebaseAuth {
             const email = this.migrateToEmail(username);
             this.firebase.auth().signInWithEmailAndPassword(email, password);
             
-            return await this.isUser() ? true : false;
+            return await this.isAuth() ? true : false;
         } catch (error) {
             console.log(error);
         }
