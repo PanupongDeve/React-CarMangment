@@ -1,6 +1,17 @@
+@import "./variables/color";
+@import "./pages/login";
+
+html {
+  height: 100vh;
+}
+
 body {
     margin: 0;
     padding: 0;
+    height: 100%;
+    width: 100%;
     font-family: sans-serif;
+    background-color: $color-primary-background;
+    color: $color-font-black;
   }
   

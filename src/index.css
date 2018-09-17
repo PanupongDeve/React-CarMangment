@@ -1,4 +1,69 @@
+#login {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  #login .card {
+    width: 50vh;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
+    #login .card:hover {
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); }
+    #login .card .card-header {
+      text-align: center;
+      text-transform: uppercase;
+      background-color: #66d7ee;
+      text-decoration: underline;
+      font-size: 40px; }
+    #login .card .card-body .accept {
+      width: 100%;
+      background-color: #9cf4a7;
+      color: #2E1D48;
+      text-transform: uppercase;
+      border: none; }
+      #login .card .card-body .accept:hover {
+        opacity: 0.8; }
+    #login .card .card-body .register {
+      width: 100%;
+      background-color: #9cc2f4;
+      color: #2E1D48;
+      text-transform: uppercase;
+      border: none; }
+      #login .card .card-body .register:hover {
+        opacity: 0.8; }
+    #login .card .card-body .cancel {
+      width: 100%;
+      background-color: #ee6d66;
+      color: #2E1D48;
+      text-transform: uppercase;
+      border: none; }
+      #login .card .card-body .cancel:hover {
+        opacity: 0.8; }
+
+@media screen and (max-width: 960px) {
+  #login {
+    height: 100vh;
+    width: 100vw; }
+    #login .card {
+      width: 100vw;
+      height: 100vh; }
+      #login .card .card-header {
+        text-align: center;
+        text-transform: uppercase;
+        background-color: #66d7ee;
+        text-decoration: underline;
+        font-weight: bold;
+        font-size: 40px; } }
+
+html {
+  height: 100vh; }
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif; }
+  height: 100%;
+  width: 100%;
+  font-family: sans-serif;
+  background-color: #f2e2d9;
+  color: #2E1D48; }
