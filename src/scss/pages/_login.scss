@@ -1,0 +1,100 @@
+#login {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+
+    & .card {
+        width: 50vh;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+        &:hover {
+            box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        }
+        & .card-header {
+            text-align: center;
+            text-transform: uppercase;
+            background-color: $color-primary-light;
+            text-decoration: underline;
+            font-size: 40px
+        }
+
+        & .card-body {
+            & .accept {
+                width: 100%;
+                background-color: $btn-success;
+                color: $color-font-black;
+                text-transform: uppercase;
+                border: none;
+
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+
+            & .register {
+                width: 100%;
+                background-color: $btn-register;
+                color: $color-font-black;
+                text-transform: uppercase;
+                border: none;
+
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+
+            & .cancel {
+                width: 100%;
+                background-color: $btn-cancel;
+                color: $color-font-black;
+                text-transform: uppercase;
+                border: none;
+
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+        }
+    }
+ 
+}
+
+
+
+
+@media screen and (max-width: 576px){
+  
+}
+
+@media screen and (max-width: 768px){
+  
+}
+
+
+@media screen and (max-width: 960px){
+    #login {
+        height: 100vh;
+        width: 100vw;
+    
+        & .card {
+            width: 100vw;
+            height: 100vh;
+            & .card-header {
+                text-align: center;
+                text-transform: uppercase;
+                background-color: $color-primary-light;
+                text-decoration: underline;
+                font-weight: bold;
+                font-size: 40px
+            }
+        }
+     
+    }
+}
+
+@media screen and (max-width: 1140px){
+  
+}
