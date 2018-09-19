@@ -10,7 +10,8 @@ const routes = [
     { path: '/', name: 'Login', component: Login },
     { path: '/table', name: 'SimpleTable' , component: SimpleTable },
     { path: '/users', name: 'Users' , component: Users },
-    { path: '/products', name: 'Products' , component: Products}
+    { path: '/products', name: 'Products' , component: Products},
+    { path: '/migrate', name: 'CloundFireStoreTest' , component: CloundFireStoreTest}
 ];
 
 export default routes;

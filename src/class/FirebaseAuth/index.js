@@ -23,7 +23,7 @@ class FirebaseAuth {
         }
     }
 
-    async signUpWithUsername(username, password, role_documentId = 'JrpWhxIylwArKbi2iCld') {
+    async signUpWithUsername(username, password, role_documentId = '2CI6v0VlpozmvbxpEq83') {
         try {
             const email = this.migrateToEmail(username);
             const response = await this.firebase.auth().createUserWithEmailAndPassword(email, password);
@@ -34,6 +34,7 @@ class FirebaseAuth {
             }
             if(await this.isAuth()) {
                 await this.saveUserProfileToDatabase(data);
+                console.log('STATUS ---> REGISTER SUCCESS')
                 return await model.user.getByUID(response.user.uid);
             } else {
                 throw "Authentication Fail"

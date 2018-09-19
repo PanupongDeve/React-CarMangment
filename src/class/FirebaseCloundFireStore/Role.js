@@ -19,6 +19,7 @@ class Role extends Model {
         await this.create(dataRoles[1]);
         await this.create(dataRoles[2]);
         
+        console.log('STATUS ---> MIGRATE SUCCESS');
     }
 
     
