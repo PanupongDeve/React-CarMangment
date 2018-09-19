@@ -1,5 +1,5 @@
 import { Icon } from 'react-icons-kit'
-import { user, shoppingCart, gear, edit, signOut } from 'react-icons-kit/fa/'
+import { user, shoppingCart, gear, edit, signOut, home } from 'react-icons-kit/fa/'
 
 class Iconkit {
     getIconComponent() {
@@ -12,7 +12,8 @@ class Iconkit {
             shoppingCart,
             gear,
             edit,
-            signOut
+            signOut,
+            home
         }
     }
 }
