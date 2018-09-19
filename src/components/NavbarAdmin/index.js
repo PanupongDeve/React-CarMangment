@@ -16,7 +16,7 @@ import {
 import IconKit from "../../class/IconKit";
 
 const Icon = IconKit.getIconComponent();
-const { user, shoppingCart, gear, edit, signOut } = IconKit.getIconFontAwesome();
+const { user, shoppingCart, gear, edit, signOut, home } = IconKit.getIconFontAwesome();
 
 export default class NavbarAdmin extends Component {
   constructor(props) {
@@ -39,13 +39,26 @@ export default class NavbarAdmin extends Component {
   }
 
   render() {
+    const { title } = this.props;
     return (
       <div id="navbar-admin">
         <Navbar color="light" light expand="md">
-          <NavbarBrand>DashBoard</NavbarBrand>
+          <NavbarBrand>{title}</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
+            <NavItem>
+                <NavLink onClick={this.onRedirect('/')}>
+                  {" "}
+                  <div className="nav-text">
+                    {" "}
+                    <div className="nav-icon">
+                      <Icon size={24} icon={home} />
+                    </div>
+                    Home{" "}
+                  </div>
+                </NavLink>
+              </NavItem>
               <NavItem>
                 <NavLink onClick={this.onRedirect('/users')}>
                   {" "}
